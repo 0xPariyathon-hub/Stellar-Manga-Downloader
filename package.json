@@ -1,0 +1,30 @@
+{
+  "name": "stellar-manga-downloader",
+  "version": "1.0.0",
+  "description": "Modern Manga Downloader Pro",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "build": "electron-builder"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "puppeteer": "^22.0.0"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.stellar.mangadownloader",
+    "productName": "Stellar Manga Downloader",
+    "win": {
+      "target": "nsis"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}
