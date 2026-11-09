@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: http: https:; base-uri 'none'; form-action 'none'">
+    <title>Stellar Manga Downloader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="titlebar">
+        <div class="titlebar-title">Stellar Manga Downloader</div>
+        <div class="titlebar-controls">
+            <button class="titlebar-btn" id="btnMinimize" aria-label="Minimize">
+                <svg viewBox="0 0 10 10"><path d="M0 5h10"/></svg>
+            </button>
+            <button class="titlebar-btn" id="btnMaximize" aria-label="Maximize">
+                <svg viewBox="0 0 10 10"><rect x="0.5" y="0.5" width="9" height="9"/></svg>
+            </button>
+            <button class="titlebar-btn titlebar-btn-close" id="btnClose" aria-label="Close">
+                <svg viewBox="0 0 10 10"><path d="M0 0l10 10M10 0L0 10"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="layout">
+        <nav class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">S</div>
+                <div>
+                    <div class="brand-name">Stellar</div>
+                    <div class="brand-sub">Manga Downloader</div>
+                </div>
+            </div>
+            <button class="nav-item active" data-view="downloader">Downloader</button>
+            <button class="nav-item" data-view="history">History</button>
+            <div class="sidebar-footer" id="appVersion"></div>
+        </nav>
+
+        <main class="content">
+            <section class="view active" id="view-downloader">
+                <div class="panel">
+                    <div class="field-row">
+                        <input type="url" id="urlInput" class="input grow" placeholder="Paste a chapter URL" spellcheck="false" autocomplete="off">
+                        <select id="modeSelect" class="input">
+                            <option value="smart">Smart filter</option>
+                            <option value="all">All images</option>
+                        </select>
+                        <button class="btn btn-primary" id="btnScan">Scan</button>
+                    </div>
+                    <div class="field-row">
+                        <button class="btn btn-secondary" id="btnLocation">Location</button>
+                        <span class="path-label" id="locationLabel">No location selected</span>
+                        <input type="text" id="folderInput" class="input folder-input" placeholder="Folder name" spellcheck="false">
+                        <label class="checkbox"><input type="checkbox" id="skipExisting" checked> Skip existing pages</label>
+                    </div>
+                </div>
+
+                <div class="toolbar">
+                    <span class="toolbar-info" id="selectionInfo">No pages loaded</span>
+                    <div class="toolbar-actions">
+                        <button class="btn btn-ghost" id="btnToggleAll" disabled>Select all</button>
+                        <button class="btn btn-ghost" id="btnRemove" disabled>Remove selected</button>
+                        <button class="btn btn-success" id="btnDownload" disabled>Download</button>
+                    </div>
+                </div>
+
+                <div class="progress hidden" id="progress">
+                    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+                    <span class="progress-label" id="progressLabel"></span>
+                </div>
+
+                <div class="grid" id="grid"></div>
+            </section>
+
+            <section class="view" id="view-history">
+                <div class="view-header">
+                    <h1>History</h1>
+                    <button class="btn btn-ghost" id="btnClearHistory">Clear history</button>
+                </div>
+                <div class="table-wrap">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Folder</th>
+                                <th>Pages</th>
+                                <th>Failed</th>
+                                <th>Location</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="statusbar">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Ready</span>
+    </footer>
+
+    <div class="modal-backdrop hidden" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal">
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <div class="modal-actions" id="modalActions"></div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

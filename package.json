@@ -1,30 +1,22 @@
 {
   "name": "stellar-manga-downloader",
-  "version": "1.0.0",
-  "description": "Modern Manga Downloader Pro",
-  "main": "main.js",
+  "productName": "Stellar Manga Downloader",
+  "version": "2.0.0",
+  "description": "Desktop application for downloading manga chapters from web readers.",
+  "main": "src/main.js",
+  "private": true,
   "scripts": {
     "start": "electron .",
-    "pack": "electron-builder --dir",
-    "build": "electron-builder"
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18.17"
   },
   "dependencies": {
-    "axios": "^1.6.8",
-    "cheerio": "^1.0.0-rc.12",
-    "puppeteer": "^22.0.0"
+    "axios": "^1.7.0",
+    "puppeteer": "^23.0.0"
   },
   "devDependencies": {
-    "electron": "^30.0.0",
-    "electron-builder": "^24.13.3"
-  },
-  "build": {
-    "appId": "com.stellar.mangadownloader",
-    "productName": "Stellar Manga Downloader",
-    "win": {
-      "target": "nsis"
-    },
-    "directories": {
-      "output": "dist"
-    }
+    "electron": "^32.0.0"
   }
 }
